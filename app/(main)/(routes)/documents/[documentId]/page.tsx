@@ -19,11 +19,11 @@ interface DocumentIdPageProps {
 }
 
 const documentId = ({ params }: DocumentIdPageProps) => {
+  const update = useMutation(api.documents.update);
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId,
   });
 
-  const update = useMutation(api.documents.update);
 
   const onChange = (content: string) => {
     update({
